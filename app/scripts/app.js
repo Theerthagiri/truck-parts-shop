@@ -7,7 +7,7 @@
 
 angular
   .module('trucksPartsShop', [
-    'ngRoute'
+    'ngRoute', 'ui.grid', 'ui.grid.pagination'
   ])
   .config(function ($routeProvider) {
     $routeProvider
