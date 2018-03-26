@@ -1,0 +1,46 @@
+<div ng-controller="partsListController" ng-init="onLoadPartsList();">
+	<div class="row">
+		<div class="col-lg-6">
+			<h4>{{pageTitle}}</h4>
+		</div>
+		<div class="col-lg-6 text-right">
+			<a href="#!/update">
+				<button type="button" class="btn btn-success">
+					<span class="glyphicon glyphicon-plus-sign"></span> Add
+				</button>
+			</a>
+		</div>
+	</div>
+	<table class="table table-bordered">
+		<tr>
+			<th>#S.No</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Email Id</th>
+			<th>Country</th>
+			<th>Action</th>
+		</tr>
+		<tr ng-if="truckPartsList.length === 0">
+			<td colspan="6">
+				 {{noRecord}}
+			</td>
+		</tr>
+		<tr ng-repeat="part in truckPartsList" ng-if="truckPartsList.length > 0">
+			<td>{{$index + 1}}</td>
+			<td>{{part.partsName}}</td>
+			<td>{{part.description}}</td>
+			<td>{{part.emailId}}</td>
+			<td>{{part.country.name}}</td>
+			<td class="text-center">
+				<a href="#!/update/{{$index + 1}}">
+					<button type="button" class="btn btn-primary  ">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+				</a> |  
+				<button type="button" class="btn btn-danger " ng-click="deletTruckParts($index + 1)">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</td>
+		</tr>
+	</table>
+</div>

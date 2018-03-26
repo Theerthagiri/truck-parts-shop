@@ -1,0 +1,46 @@
+<div class="row" ng-controller="UpdatePartsController" ng-init="onLoadPartsUpdate();">
+	<form class="form-horizontal col-lg-6 col-lg-offset-3" novalidate name="truckPartsForm" ng-submit="updateTruckParts(truckParts)">
+		<div class="form-group">
+			<label for="inputPartname" class="col-sm-3 control-label">Parts name*</label>
+			<div class="col-sm-9">
+				<input type="text" name="partsName" placeholder="Parts name" class="form-control" ng-model="truckParts.partsName" required />
+				<p class="text-danger" ng-if="truckPartsForm.partsName.$touched && truckPartsForm.partsName.$error.required">Parts name is required</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputEmail" class="col-sm-3 control-label">Email Id*</label>
+			<div class="col-sm-9">
+				<input type="email" name="emailId" class="form-control" ng-model="truckParts.emailId" required placeholder="Contact email" />
+				<p class="text-danger" ng-if="truckPartsForm.emailId.$touched && truckPartsForm.emailId.$error.required">Email Id is required</p>
+				<p class="text-danger" ng-if="!truckPartsForm.emailId.$error.required && truckPartsForm.emailId.$invalid">Enter valid email Id</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputName" class="col-sm-3 control-label">Description*</label>
+			<div class="col-sm-9">
+				<textarea class="form-control" rows="3" ng-model="truckParts.description" name="description" required></textarea>
+				<p class="text-danger" ng-if="truckPartsForm.description.$touched && truckPartsForm.description.$error.required">Description is required</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputName" class="col-sm-3 control-label">Country*</label>
+			<div class="col-sm-9">
+				<select class="form-control" ng-model="truckParts.country" name="country" ng-options="country.name for country in countries track by country.code" ng-required>
+					<option value="">Select Country</option>
+				</select>
+				<p class="text-danger" ng-if="truckPartsForm.country.$dirty && truckPartsForm.country.$error.required">Description is required</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-lg-9 col-lg-offset-3">
+				<button type="button" class="btn btn-danger" ng-click="goBack();">
+					<span>Cancel</span>
+				</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="truckPartsForm.$invalid">
+					<span ng-if="isEdit">Update</span>
+					<span ng-if="!isEdit">Save</span>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

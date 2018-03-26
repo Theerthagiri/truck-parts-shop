@@ -1,0 +1,8 @@
+<div class="form-group">
+    <label for="inputPartname" class="col-sm-3 control-label">Parts name*</label>
+    <div class="col-sm-9">
+        <input type="text" name="partsName" placeholder="Parts name" class="form-control" ng-model="truckParts.partsName" required
+        />
+        <p class="text-danger" ng-if="truckPartsForm.partsName.$dirty && truckPartsForm.partsName.$error.required">Parts name is required</p>
+    </div>
+</div>
